@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Scans the given library and adds links
+
+LIBRARY=$1;
+
+############# Preconditions #############
+if [ "$LIBRARY" = "" ]; then
+  echo "No library given!";
+  exit 1;
+fi;
+
+if [ !-e $LIBRARY/.library ]; then
+  echo "Given library is not initialized!";
+  exit 2;
+fi;
+
+if [ !-e $LIBRARY/.library/list ]; then
+  echo "No folders to scan!";
+  exit 3;
+fi;
+
+if [ -z $LIBRARY/.library/list ]; then
+  echo "No folders to scan!";
+  exit 4;
+fi;
+#########################################
+
+RETURN=0;
+echo "Scanning folders for library $LIBRARY";
+echo
+
+for FOLDER in `grep -vP '^#' $LIBRARY/.library/list`; do
+  
+  echo "Scanning $FOLDER...";
+  cp -sRf $FOLDER/* $LIBRARY/;
+  
+  if [ "$?" != 0 ]; then
+    RETURN=5;
+  fi;
+fi;
+
+exit $RETURN;
