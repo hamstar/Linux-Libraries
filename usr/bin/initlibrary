@@ -1,0 +1,14 @@
+#!/bin/bash
+
+LIBRARY=`pwd`;
+CONFDIR=$LIBRARY/.library;
+
+if [ -e $CONFDIR ]; then
+  echo "Library already initialized";
+  exit 1;
+fi;
+
+mkdir $CONFDIR;
+touch $CONFDIR/list;
+
+echo "Library initialized";
