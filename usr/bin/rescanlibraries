@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Rescans all the libaries belonging to this user
+
+. /usr/share/homelibs/functions.sh;
+create_config_if_not_exists;
+
+LIBRARIES=$HOME/.config/homelibs/list;
+
+for LIBRARY in `grep -Pv '^#' $LIBRARIES`; do
+
+  rescanlibrary $LIBRARY;
+done;
+
+exir 0;
