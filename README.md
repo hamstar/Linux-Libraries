@@ -96,7 +96,7 @@ If you find this works well you could add it to your
 
 You can also try out the quick and dirty GUI by running:
 
-	libs-gui ~/Music
+	libs-gui /home/you/Music # WARNING: Use absolute path names
 	
 You should be to do this from ALT+F2 (in Gnome) however.
 

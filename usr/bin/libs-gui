@@ -14,12 +14,12 @@ cd $LIBRARY;
 # Try to init if its not a library
 if [ `is_a_library $LIBRARY` = "0" ]; then
 	
-	zenity --question --text "This folder is not a library, would you like to initialize it now?";
+	zenity --question --text "$LIBRARY is not a library, would you like to initialize it now?";
 	if [ "$?" = "1" ]; then
 		exit 1;
 	fi;
 	
-	libs init;
+	cd $LIBRARY && libs init;
 fi;
 
 # Start the main dialog
