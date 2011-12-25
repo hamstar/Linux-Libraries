@@ -1,0 +1,61 @@
+#!/bin/bash
+
+SHARE=/usr/share/homelibs;
+FUNCS=$SHARE/functions;
+
+. $FUNCS/base.sh;
+create_config_if_not_exists;
+
+case $1 in
+	"init")
+		. $FUNCS/init.sh;
+		init `pwd`;
+		;;
+	"scan")
+		. $FUNCS/scan.sh;
+		
+		case $2 in
+			"--all")
+				scan_all;
+				;;
+			*)
+				LIBRARY=$2;
+				if [ "$LIBRARY" = "" ]; then
+					LIBRARY=`pwd`;
+				fi;
+				
+				scan $LIBRARY;
+			;;
+		esac;
+		;;
+	"add")
+		. $FUNCS/add.sh;
+		
+		add_folder $2;
+		;;
+	"reset")
+		. $FUNCS/reset.sh;
+		
+		reset_library `pwd`;
+		;;
+	"list")
+		check_in_library;
+		get_folders `pwd`;
+		;;
+	"remove")
+	
+		check_in_library;
+	
+		. $FUNCS/remove.sh;
+		
+		if [ "$2" = "" ]; then
+			remove_folder_menu;
+		else
+			remove_folder $2;
+		fi;
+		;;
+	*)
+		echo "Invalid function";
+		exit 1;
+		;;
+esac
