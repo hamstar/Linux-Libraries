@@ -92,7 +92,7 @@ You can also scan all your libraries at the same time by going:
 	
 If you find this works well you could add it to your 
 	
-### GUI
+## GUI
 
 You can also try out the quick and dirty GUI by running:
 
