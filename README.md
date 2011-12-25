@@ -3,6 +3,11 @@
 This is a set of scripts for merging multiple directories into one with 
 the use of symbolic links.  It is inspired by git.
 
+# Installation
+
+I haven't done the remote installer yet, but you can install it manually 
+by copying the `usr` folder to your `/` directory as root.
+
 # How do I use it?
 
 ## Initialize
@@ -79,6 +84,11 @@ You can also scan all your libraries at the same time by going:
 
 	$ libs scan --all
 	
-# GUI Coming Soon!
+### GUI
 
+You can also try out the quick and dirty GUI by running:
+
+	libs-gui ~/Music
+
+# Feedback
 Any suggestions/questions/feedback don't hesitate to email me at robert.mcleod@itpeople.co.nz

@@ -1,0 +1,71 @@
+#!/bin/bash
+
+if [ "$1" = "" ]; then
+	zenity --error --text "No library selected!";
+	exit;
+fi;
+
+SHARE=/usr/share/homelibs;
+LIBRARY=$1;
+cd $LIBRARY;
+
+. $SHARE/functions/base.sh;
+
+# Try to init if its not a library
+if [ `is_a_library $LIBRARY` = "0" ]; then
+	
+	zenity --question --text "This folder is not a library, would you like to initialize it now?";
+	if [ "$?" = "1" ]; then
+		exit 1;
+	fi;
+	
+	libs init;
+fi;
+
+# Start the main dialog
+EXIT=0;
+while [ "$EXIT" = "0" ]; do
+
+	# Show the main dialog
+	OPERATION=$(zenity --list --text "Working with library $LIBRARY" --radiolist --column "Pick" --column "Operation" FALSE "Add Folder" FALSE "Show Folders" FALSE "Scan Folders" FALSE "Reset" FALSE "Deinitialize");
+
+	case $OPERATION in
+		"")
+			EXIT=1;
+			;;
+		"Add Folder")
+			FOLDER=$(zenity --file-selection --directory);
+			
+			libs add $FOLDER;
+			;;
+		"Show Folders")
+		
+			if [ `libs list|wc -l` = "0" ]; then
+				zenity --error --text="No folders yet";
+			else
+				folders=(`libs list`);
+				remove=$(zenity --list --text "Select a folder and click OK to remove it" --radiolist --column "Remove" --column "Folder" $(printf 'FALSE %s\n' ${folders[@]}));
+				
+				if [ "$remove" != "" ]; then
+					libs remove $remove;
+				fi;
+			fi;
+			;;
+		"Scan Folders")
+			libs reset|zenity --progress --pulsate --auto-kill --auto-close;
+			libs scan|zenity --progress --pulsate --auto-kill --auto-close;
+			;;
+		"Reset")
+			libs reset|zenity --progress --pulsate --auto-kill --auto-close;
+			;;
+		"Deinitialize")
+			libs reset|zenity --progress --pulsate --auto-kill --auto-close;
+			rm $LIBRARY/.library -fr;
+			zenity --info --text="$LIBRARY is no longer a library";
+			EXIT=1;
+			;;
+		*)
+			zenity --error --text "Unknown option.";
+			;;
+	esac;
+done;
