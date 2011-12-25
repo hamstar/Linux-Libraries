@@ -1,7 +1,13 @@
 # What is this?
 
 This is a set of scripts for merging multiple directories into one with 
-the use of symbolic links.  It is inspired by git.
+the use of symbolic links.  It is inspired by git and the libraries in 
+Windows 7.
+
+I find that I can't fit all my media on one drive, so its spread over multiple 
+drives.  In my `$HOME` folder I have Music and Videos and what-not, so I 
+wanted all the content of each type to be present in the folders in my `$HOME` 
+folder but clearly can't fit everything physically in that folder.
 
 # Installation
 
@@ -79,16 +85,20 @@ You will need to reset and scan again for the changes to take place though:
 	$ libs reset
 	$ libs scan
 	
-## Experimental
+## Experimental (I haven't tested this)
 You can also scan all your libraries at the same time by going:
 
 	$ libs scan --all
+	
+If you find this works well you could add it to your 
 	
 ### GUI
 
 You can also try out the quick and dirty GUI by running:
 
 	libs-gui ~/Music
+	
+You should be to do this from ALT+F2 (in Gnome) however.
 
 # Feedback
 Any suggestions/questions/feedback don't hesitate to email me at robert.mcleod@itpeople.co.nz
