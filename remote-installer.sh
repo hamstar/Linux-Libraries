@@ -17,7 +17,7 @@ cd;
 
 # Clone into repo
 git clone git://github.com/hamstar/Linux-Libraries.git;
-if [ "$? != "0" ]; then
+if [ "$?" != "0" ]; then
   echo "Unable to clone the repo for some reason";
   exit 1;
 fi;
@@ -25,7 +25,7 @@ fi;
 # Copy stuff as root
 cd Linux-Libraries;
 sudo cp usr / -Rf;
-if [ "$? != "0" ]; then
+if [ "$?" != "0" ]; then
   echo "Unable to copy the files to the root directory!";
   exit 1;
 fi;
@@ -33,7 +33,7 @@ fi;
 # Remove repo
 cd;
 rm Linux-Libraries -fr;
-if [ "$? != "0" ]; then
+if [ "$?" != "0" ]; then
   echo "Couldn't remove $HOME/Linux-Libraries!";
 fi;
 
