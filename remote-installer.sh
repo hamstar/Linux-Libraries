@@ -23,6 +23,7 @@ if [ "$?" != "0" ]; then
 fi;
 
 # Copy stuff as root
+echo "Copying the files to root";
 cd Linux-Libraries;
 sudo cp usr / -Rf;
 if [ "$?" != "0" ]; then
@@ -45,7 +46,7 @@ echo;
 
 echo "To uninstall this run the following commands:";
 echo;
-echo "\tsudo rm /usr/share/homelibs -fr";
-echo "\tsudo rm /usr/bin/libs";
-echo "\tsudo rm /usr/bin/libs-gui";
+echo -e "\tsudo rm /usr/share/homelibs -fr";
+echo -e "\tsudo rm /usr/bin/libs";
+echo -e "\tsudo rm /usr/bin/libs-gui";
 echo;
