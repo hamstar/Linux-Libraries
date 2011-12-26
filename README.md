@@ -9,6 +9,8 @@ drives.  In my `$HOME` folder I have Music and Videos and what-not, so I
 wanted all the content of each type to be present in the folders in my `$HOME` 
 folder but clearly can't fit everything physically in that folder.
 
+**Note: The files and folders created by this script are pretty much read only, moving them around will have no effect on the actual filesystem**
+
 # Installation
 
 You can install it manually by copying the `usr` folder to your `/` directory as root.
