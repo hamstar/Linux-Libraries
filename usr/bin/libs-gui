@@ -27,7 +27,7 @@ EXIT=0;
 while [ "$EXIT" = "0" ]; do
 
 	# Show the main dialog
-	OPERATION=$(zenity --list --text "Working with library $LIBRARY" --radiolist --column "Pick" --column "Operation" FALSE "Add Folder" FALSE "Show Folders" FALSE "Scan Folders" FALSE "Reset" FALSE "Deinitialize");
+	OPERATION=$(zenity --list --text "Working with library $LIBRARY" --radiolist --column "Pick" --column "Operation" FALSE "Add Folder" FALSE "Show Folders" FALSE "Scan Folders" FALSE "Reset" FALSE "Deinitialize" --height=300);
 
 	case $OPERATION in
 		"")
@@ -44,7 +44,7 @@ while [ "$EXIT" = "0" ]; do
 				zenity --error --text="No folders yet";
 			else
 				folders=(`libs list`);
-				remove=$(zenity --list --text "Select a folder and click OK to remove it" --radiolist --column "Remove" --column "Folder" $(printf 'FALSE %s\n' ${folders[@]}));
+				remove=$(zenity --list --height=300 --text "These are the folders that will be indexed into the library upon scanning. If you want to remove a folder select it and click OK" --radiolist --column "Remove" --column "Folder" $(printf 'FALSE %s\n' ${folders[@]}));
 				
 				if [ "$remove" != "" ]; then
 					libs remove $remove;
