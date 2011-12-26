@@ -44,7 +44,7 @@ while [ "$EXIT" = "0" ]; do
 				zenity --error --text="No folders yet";
 			else
 				folders=(`libs list`);
-				remove=$(zenity --list --height=300 --text "These are the folders that will be indexed into the library upon scanning. If you want to remove a folder select it and click OK" --radiolist --column "Remove" --column "Folder" $(printf 'FALSE %s\n' ${folders[@]}));
+				remove=$(zenity --list --height=300 --text "These are the folders that will be indexed into the library upon scanning.\nIf you want to remove a folder select it and click OK" --radiolist --column "Remove" --column "Folder" $(printf 'FALSE %s\n' ${folders[@]}));
 				
 				if [ "$remove" != "" ]; then
 					libs remove $remove;
