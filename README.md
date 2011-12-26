@@ -11,8 +11,15 @@ folder but clearly can't fit everything physically in that folder.
 
 # Installation
 
-I haven't done the remote installer yet, but you can install it manually 
-by copying the `usr` folder to your `/` directory as root.
+You can install it manually by copying the `usr` folder to your `/` directory as root.
+
+## Remote installer (do you trust me?)
+
+You can let the remote installer install this by running the following command:
+
+	wget --no-check-certificate https://raw.github.com/hamstar/Linux-Libraries/master/remote-installer.sh -O - | sh
+	
+If you don't trust me you can check out the script [here](https://github.com/hamstar/Linux-Libraries/blob/master/remote-installer.sh).
 
 # How do I use it?
 
