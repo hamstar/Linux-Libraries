@@ -1,7 +1,5 @@
 #!/bin/bash
 
-######### Untested! ##########
-
 # Check we have git installed
 git --version > /dev/null;
 if [ "$?" != "0" ]; then
